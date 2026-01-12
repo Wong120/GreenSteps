@@ -18,7 +18,7 @@
       text-align: center;
     }
     .container {
-      max-width: 720px;
+      max-width: 760px;
       margin: 30px auto;
       background: white;
       padding: 25px;
@@ -43,6 +43,11 @@
       padding: 8px;
       margin-top: 5px;
       box-sizing: border-box;
+    }
+    p.guide {
+      font-size: 13px;
+      color: #666;
+      margin: 4px 0 12px 0;
     }
     button {
       margin-top: 15px;
@@ -90,27 +95,33 @@
 <div class="container">
   <h2>Carbon Footprint Calculator</h2>
   <p class="description">
-    This tool estimates your daily carbon footprint based on common activities.
-    Results are for educational and awareness purposes only.
+    This tool estimates your daily carbon footprint based on common lifestyle activities.
+    The values shown are approximate and intended for educational and awareness purposes only.
   </p>
 
+  <!-- Electricity -->
   <label>Electricity Usage (kWh per day)</label>
-  <input type="number" id="electricity" placeholder="e.g. 5 kWh">
+  <input type="number" id="electricity" placeholder="e.g. 10">
+  <p class="guide">Typical daily usage: <strong>8 – 12 kWh</strong></p>
 
+  <!-- Transportation -->
   <label>Car Travel Distance (km per day)</label>
-  <input type="number" id="car" placeholder="e.g. 20 km">
+  <input type="number" id="car" placeholder="e.g. 30">
+  <p class="guide">Typical daily travel: <strong>20 – 40 km</strong></p>
 
+  <!-- Water -->
   <label>Water Usage (liters per day)</label>
-  <input type="number" id="water" placeholder="e.g. 150 liters">
+  <input type="number" id="water" placeholder="e.g. 180">
+  <p class="guide">Typical daily usage: <strong>150 – 250 liters</strong></p>
 
-  <button onclick="calculate()">Calculate</button>
+  <button onclick="calculate()">Calculate Carbon Footprint</button>
   <button class="reset" onclick="resetForm()">Reset</button>
 
   <div class="result" id="result"></div>
 </div>
 
 <footer>
-  © 2026 GreenSteps | Educational Sustainability Project
+  © 2026 GreenSteps | MMU Sustainable Society Project
 </footer>
 
 <script>
@@ -119,9 +130,10 @@
     const car = Number(document.getElementById('car').value) || 0;
     const water = Number(document.getElementById('water').value) || 0;
 
-    const electricityEmission = electricity * 0.233;
-    const carEmission = car * 0.192;
-    const waterEmission = water * 0.0003;
+    // Emission factors (educational estimates)
+    const electricityEmission = electricity * 0.233; // kg CO2 per kWh
+    const carEmission = car * 0.192; // kg CO2 per km
+    const waterEmission = water * 0.0003; // kg CO2 per liter
 
     const total = electricityEmission + carEmission + waterEmission;
 
@@ -136,11 +148,11 @@
       <strong>Total: ${total.toFixed(2)} kg CO₂ per day</strong>
 
       <div class="tips">
-        <p><strong>Tips to Reduce Your Footprint:</strong></p>
+        <p><strong>Tips to Reduce Your Carbon Footprint:</strong></p>
         <ul>
-          <li>Switch off electrical appliances when not in use</li>
+          <li>Turn off electrical appliances when not in use</li>
           <li>Use public transport or carpool when possible</li>
-          <li>Reduce water consumption in daily activities</li>
+          <li>Reduce water consumption during daily activities</li>
         </ul>
       </div>
     `;
@@ -156,4 +168,3 @@
 
 </body>
 </html>
-
